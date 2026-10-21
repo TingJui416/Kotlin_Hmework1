@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- 請輸入玩家姓名的輸入框 -->
+    <EditText
+        android:id="@+id/edName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="請輸入玩家姓名" /> <!--[cite: 2] -->
+
+    <!-- 遊戲狀態文字提示 -->
+    <TextView
+        android:id="@+id/tvText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="請輸入姓名已開始遊戲"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp" /> <!--[cite: 2] -->
+
+    <!-- 剪刀、石頭、布 單選按鈕群組 -->
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <RadioButton
+            android:id="@+id/btnScissor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="剪刀"
+            android:checked="true" /> <!--[cite: 2] -->
+
+        <RadioButton
+            android:id="@+id/btnRock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="石頭" /> <!--[cite: 2] -->
+
+        <RadioButton
+            android:id="@+id/btnPaper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="布" /> <!--[cite: 2] -->
+    </RadioGroup>
+
+    <!-- 猜拳按鈕 -->
+    <Button
+        android:id="@+id/btnMora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="猜拳"
+        android:layout_marginTop="16dp" /> <!--[cite: 2] -->
+
+    <!-- 結果顯示區 (橫向排列) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="32dp">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="名字" /> <!--[cite: 2] -->
+
+        <TextView
+            android:id="@+id/tvWinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="勝利者" /> <!--[cite: 2] -->
+
+        <TextView
+            android:id="@+id/tvMyMora"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="我方出拳" /> <!--[cite: 2] -->
+
+        <TextView
+            android:id="@+id/tvTargetMora"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="電腦出拳" /> <!--[cite: 2] -->
+    </LinearLayout>
+
+</LinearLayout>
