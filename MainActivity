@@ -1,0 +1,69 @@
+package com.example.mmslab_android_kotlin // 請確認此處為您的專案 package 名稱
+
+import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import kotlin.random.Random
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        // 綁定 UI 元件
+        val edName = findViewById<EditText>(R.id.edName)
+        val tvText = findViewById<TextView>(R.id.tvText)
+        val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
+        val btnMora = findViewById<Button>(R.id.btnMora)
+        val tvName = findViewById<TextView>(R.id.tvName)
+        val tvWinner = findViewById<TextView>(R.id.tvWinner)
+        val tvMyMora = findViewById<TextView>(R.id.tvMyMora)
+        val tvTargetMora = findViewById<TextView>(R.id.tvTargetMora)
+
+        // 設定猜拳按鈕監聽事件
+        btnMora.setOnClickListener {
+            // 檢查是否輸入姓名
+            if (edName.text.isEmpty()) {
+                tvText.text = "請輸入玩家姓名"
+                return@setOnClickListener
+            }
+
+            val playerName = edName.text.toString()
+            val computerChoice = Random.nextInt(3) // 0:剪刀, 1:石頭, 2:布
+            
+            // 判斷玩家選擇的單選按鈕
+            val myChoice = when (radioGroup.checkedRadioButtonId) {
+                R.id.btnScissor -> 0
+                R.id.btnRock -> 1
+                else -> 2
+            }
+
+            val choices = arrayOf("剪刀", "石頭", "布")
+
+            // 顯示名字與雙方出拳結果
+            tvName.text = "名字\n$playerName"
+            tvMyMora.text = "我方出拳\n${choices[myChoice]}"
+            tvTargetMora.text = "電腦出拳\n${choices[computerChoice]}"
+
+            // 判斷勝負邏輯並更新上方提示文字與勝利者
+            when {
+                myChoice == computerChoice -> {
+                    tvWinner.text = "平手"
+                }
+                (myChoice == 0 && computerChoice == 2) ||
+                (myChoice == 1 && computerChoice == 0) ||
+                (myChoice == 2 && computerChoice == 1) -> {
+                    tvWinner.text = "勝利者\n$playerName"
+                }
+                else -> {
+                    tvWinner.text = "勝利者\n電腦"
+                }
+            }
+        }
+    }
+}
